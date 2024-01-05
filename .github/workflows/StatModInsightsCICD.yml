@@ -37,7 +37,7 @@ jobs:
     #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: StatModInsights
       env:
-        feed_json: "rama"
+        feed_json: "https://github.com/ramasureshvijjana/StatModInsights_JSON/blob/master/feed_config.json"
       run: |
         python MeticulousStatsReporter.py
         
