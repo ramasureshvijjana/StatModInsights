@@ -1,3 +1,5 @@
 import pandas as pd
+import os
 
-print("MeticulousStatsReporter  ")
+json_val = os.getenv("feed_json")
+print(f"MeticulousStatsReporter  {json_val}")
