@@ -44,6 +44,6 @@ jobs:
 
     - name: StatModInsights
       env:
-        feed_json: "https://github.com/ramasureshvijjana/StatModInsights_JSON/blob/master/feed_config.json"
+        feed_json: "https://raw.githubusercontent.com/ramasureshvijjana/StatModInsights_JSON/master/feed_config.json"
       run: |
         python MeticulousStatsReporter.py
