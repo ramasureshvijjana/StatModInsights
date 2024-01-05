@@ -4,7 +4,7 @@ import json
 import os
 
 
-# #json_path = os.getenv("feed_json")
+github_raw_url = os.getenv("feed_json")
 # json_path = "https://github.com/ramasureshvijjana/StatModInsights_JSON/blob/master/feed_config.json"
 # print(f"MeticulousStatsReporter  {json_path}")
 
@@ -12,7 +12,7 @@ import os
 #     data = json.load(json_file)
 
 # URL of the raw JSON file on GitHub
-github_raw_url = 'https://raw.githubusercontent.com/ramasureshvijjana/StatModInsights_JSON/master/feed_config.json'
+#github_raw_url = 'https://raw.githubusercontent.com/ramasureshvijjana/StatModInsights_JSON/master/feed_config.json'
 
 # Specify the local path where you want to save the downloaded file
 local_file_path = 'feed_config.json'
