@@ -38,7 +38,9 @@ class  MeticulousStatsReporter:
     def update_datatype_stats(self):
         for key in self.statistics_dfs_dict:
             clm_datatype_dict = self.data[self.datatype_classified_clms[key]].dtypes
-            print(clm_datatype_dict)
+            self.statistics_dfs_dict[key]['Data_Types'] = self.statistics_dfs_dict[key].index.map(clm_datatype_dict)
+            print(self.statistics_dfs_dict[key])
+            
         # all_columns_dtypes = 
         # for key in self.statistics_dfs_dict:
         #     for clm in self.datatype_classified_clms[key]:
