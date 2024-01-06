@@ -46,7 +46,12 @@ class  MeticulousStatsReporter:
             self.statistics_dfs_dict[key]['Data_Types'] = self.statistics_dfs_dict[key].index.map(clm_datatype_dict)
 
     def update_mean_median_mode(self):
+        mean_median_mode_values = dict()
         if 'numeric_columns' in self.statistics_dfs_dict:
-            clms_mean_values = {numaric_clm: self.data[numaric_clm].mean() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
-            print(f"clms_mean_values: {clms_mean_values}")
-        self.statistics_dfs_dict['numeric_columns']['mean'] = self.statistics_dfs_dict['numeric_columns'].index.map(clms_mean_values)
+            mean_median_mode_values['mean'] = {numaric_clm: self.data[numaric_clm].mean() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
+            mean_median_mode_values['median'] = {numaric_clm: self.data[numaric_clm].median() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
+            mean_median_mode_values['mode'] = {numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
+            
+            # print(f"clms_mean_values: {clms_mean_values}")
+            for key, val in mean_median_mode_values:
+                self.statistics_dfs_dict['numeric_columns'][key] = self.statistics_dfs_dict['numeric_columns'].index.map(val)
