@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 import logging
-logging.basicConfig(format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 class Util:
     def __init__(self):

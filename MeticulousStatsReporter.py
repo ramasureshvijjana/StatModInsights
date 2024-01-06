@@ -1,7 +1,7 @@
 import pandas as pd
 from util import Util
 import logging
-logging.basicConfig(format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 class  MeticulousStatsReporter:
     def __init__(self, github_raw_url, data_file_path):

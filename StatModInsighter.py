@@ -1,7 +1,7 @@
 import os
 from MeticulousStatsReporter import MeticulousStatsReporter as msr
 import logging
-logging.basicConfig(format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 if __name__ == "__main__":
     logging.info("Pipeline running started.")
