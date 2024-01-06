@@ -50,9 +50,10 @@ class  MeticulousStatsReporter:
         if 'numeric_columns' in self.statistics_dfs_dict:
             mean_median_mode_values['mean'] = {numaric_clm: self.data[numaric_clm].mean() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
             mean_median_mode_values['median'] = {numaric_clm: self.data[numaric_clm].median() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
-            #mean_median_mode_values['mode'] = {numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
-            print({numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']})
-            print(type(self.data['year'].mode()))
+            print(self.data['year'].mode().iloc[0])
+            mean_median_mode_values['mode'] = {numaric_clm: self.data[numaric_clm].mode().iloc[0] for numaric_clm in self.datatype_classified_clms['numeric_columns']}
+            #print({numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']})
+            
             # print(f"clms_mean_values: {clms_mean_values}")
             for key, val in mean_median_mode_values.items():
                 #print(f"key: {key} and val: {val}")
