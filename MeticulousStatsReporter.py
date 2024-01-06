@@ -35,9 +35,15 @@ class  MeticulousStatsReporter:
     def create_statistics_dfs(self):
         for key, clm_list in self.datatype_classified_clms.items():
             if len(clm_list) > 0:
-                self.statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,columns=['Data_Types'])
+                self.statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,
+                                                             columns=['Data_Types', 'mean', 'median', 'mode'])
 
     def update_datatype_stats(self):
         for key in self.statistics_dfs_dict:
             clm_datatype_dict = self.data[self.datatype_classified_clms[key]].dtypes
             self.statistics_dfs_dict[key]['Data_Types'] = self.statistics_dfs_dict[key].index.map(clm_datatype_dict)
+
+    def update_mean_median_mode(self):
+        if 'numeric_columns' in self.statistics_dfs_dict:
+            clms_mean_values = {numaric_clm: self.data['numaric_clm'].mean() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
+        self.statistics_dfs_dict['numeric_columns']['mean'] = self.statistics_dfs_dict['numeric_columns'].index.map(clms_mean_values)
