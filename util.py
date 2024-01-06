@@ -27,10 +27,19 @@ class Util:
                            usecols= required_columns)
         return data
     
-    def classifying_numaric_and_obj_clms(self, meticulous_stats_reporter_obj):
-        if 'numaric_columns' in meticulous_stats_reporter_obj.data_json:
-            numaric_columns = meticulous_stats_reporter_obj.data_json['numaric_columns']
-        else:
-            datatype_dict = dict(meticulous_stats_reporter_obj.data.dtypes)
-            #numaric_columns = 
-            print(f"Data type of all columns is {datatype_dict}")
+    def classifying_numeric_and_obj_clms(self, msr_obj):
+
+        dtype_clm_keys = ['numeric_columns', "string_columns"]
+        datatype_unkown_columns = list(msr_obj.data.columns)
+        
+        # Classifing the columns
+        for key in dtype_clm_keys:
+            if key in msr_obj.data_json:
+                msr_obj.datatype_classified_clms[key] = msr_obj.data_json[key]
+            else:
+                msr_obj.datatype_classified_clms[key] = [col for col in datatype_unkown_columns if pd.api.types.is_numeric_dtype(msr_obj.data[col])]
+            datatype_unkown_columns -= msr_obj.datatype_classified_clms[key]
+            print(f"The Datatypes classified columns after filter the Numaric columns are {msr_obj.datatype_classified_clms}")
+        
+        msr_obj.datatype_classified_clms['datatype_unkown_columns'] = datatype_unkown_columns
+        
