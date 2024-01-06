@@ -46,4 +46,4 @@ jobs:
       env:
         feed_json: "https://raw.githubusercontent.com/ramasureshvijjana/StatModInsights_JSON/master/feed_config.json"
       run: |
-        python StatModInsighter.py stat_mod_insighter_start()
+        python StatModInsighter.py stat_mod_insighter_start
