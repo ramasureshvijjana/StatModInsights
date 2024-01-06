@@ -15,4 +15,4 @@ if __name__ == "__main__":
     logging.info("Pipeline running succeeded.")
     pass
 
-# classifying_numaric_and_obj_clms
+# logging setup
