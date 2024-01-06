@@ -24,11 +24,13 @@ class Util:
 
         logging.debug(f"MeticulousStatsReporter  {data_json}")
         return data_json
-    def load_input_data(self, data_file_path, required_columns):
-        data = pd.read_csv(data_file_path,
-                           usecols= required_columns)
-        return data
     
+
+    def load_input_data(self, data_file_path, required_columns):
+        return pd.read_csv(data_file_path,
+                           usecols= required_columns)
+    
+
     def classifying_numeric_and_obj_clms(self, msr_obj):
 
         dtype_clm_keys = ['numeric_columns', "string_columns"]

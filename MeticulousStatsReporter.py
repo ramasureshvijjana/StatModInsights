@@ -5,28 +5,47 @@ logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %
 
 class  MeticulousStatsReporter:
     def __init__(self, github_raw_url, data_file_path):
+        
+        """
+        This constructor runs all statistical information generated functions and will update the stats in stats dataframes.
+            Step-1: First, it will download the data configuration json and data from remote GitHub repository.
+            Step-2: Classifying the dataframe columns based on their dtypes.
+            Step-3: Creating statistics datafrmes to showcase stat reports.
+            Step-4: It will update the datatype, mean, median, mode, null, etc... values stats.
+        Parameters:
+            github_raw_url : Data configaration json file url from remote GitHub repository.
+            data_file_path : Input data file url from remote GitHub repository.
+        Return Values:
+            No return values
+        """
+
         # Creating required internal objs.
         util_obj = Util()
-
-        # Downloading data configuration json.
+        
+        # Step-1:
+        ## Downloading data configuration json from remote GitHub repository.
         self.data_json = util_obj.download_data_config(github_raw_url)
         logging.info(f"The data configuration json has been downloaded successfully.")
 
-        # Loading input data file as pandas df.
+        ## Loading input data file as pandas df from remote GitHub repository.
         required_columns = self.data_json['required_columns'] if 'required_columns' in self.data_json else None
         self.data = util_obj.load_input_data(data_file_path, required_columns)
         self.data.head()
         logging.info(f"The input data loaded successfully.")
 
-        # Classifying the dataframe columns based on dtypes.
+        # Step-2:
+        ## Classifying the dataframe columns based on its dtypes.
         self.datatype_classified_clms = dict()
         util_obj.classifying_numeric_and_obj_clms(self)
         logging.info(f"""The dataframe columns are classified successfully based on dtypes.
                      The classified datatype columns are {self.datatype_classified_clms}""")
         
-        # Creating statistics datafrmes to showcase stat reports.
+        # Step-3:
+        ## Creating statistics datafrmes to showcase stat reports.
         self.statistics_dfs_dict = dict()
         self.create_statistics_dfs()
+
+        # Step-4:
         self.update_datatype_stats() # Updating datatype stats
         self.update_mean_median_mode() # Updating mean, median, mode values
         self.update_null_values_count() # Updating null values
