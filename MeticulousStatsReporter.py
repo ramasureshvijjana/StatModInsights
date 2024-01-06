@@ -26,15 +26,21 @@ class  MeticulousStatsReporter:
         
         # Creating statistics datafrmes to showcase stat reports.
         self.create_statistics_dfs()
-
+        # Updating datatype stats
+        self.update_datatype_stats()
 
     def create_statistics_dfs(self):
-        statistics_dfs_dict = dict()
+        self.statistics_dfs_dict = dict()
         for key, clm_list in self.datatype_classified_clms.items():
             if len(clm_list) > 0:
-                statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,columns=['Data_Types'])
-                print(statistics_dfs_dict[key])
+                self.statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,columns=['Data_Types'])
 
-    
-
-        
+    def update_datatype_stats(self):
+        for key in self.statistics_dfs_dict:
+            clm_datatype_dict = self.data[self.datatype_classified_clms[key]].dtypes
+            print(clm_datatype_dict)
+        # all_columns_dtypes = 
+        # for key in self.statistics_dfs_dict:
+        #     for clm in self.datatype_classified_clms[key]:
+        #         clm_datatype_dict = self.data.dtypes
+        # self.statistics_dfs_dict[key]['Data_Types'] = self.statistics_dfs_dict[key].index.map()
