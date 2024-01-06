@@ -22,6 +22,14 @@ class Util:
 
         print(f"MeticulousStatsReporter  {data_json}")
         return data_json
-    def load_input_data(self, data_file_path):
-        data = pd.read_csv(data_file_path)
+    def load_input_data(self, data_file_path, required_columns):
+        data = pd.read_csv(data_file_path,
+                           usecols= required_columns)
         return data
+    
+    def classifying_numaric_and_obj_clms(self, meticulous_stats_reporter_obj):
+        if 'numaric_columns' in meticulous_stats_reporter_obj.data_json:
+            numaric_columns = meticulous_stats_reporter_obj.data_json['numaric_columns']
+        else:
+            datatype_dict = dict(meticulous_stats_reporter_obj.data.dtypes)
+            print("Data type of all columns is {datatype_dict}")
