@@ -8,5 +8,5 @@ def stat_mod_insighter_start():
     print("Pipeline running succeeded.")
     pass
 
-
+stat_mod_insighter_start()
 # oops setup
