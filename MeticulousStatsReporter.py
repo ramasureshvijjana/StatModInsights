@@ -29,6 +29,7 @@ class  MeticulousStatsReporter:
         self.create_statistics_dfs()
         # Updating datatype stats
         self.update_datatype_stats()
+        self.update_mean_median_mode()
 
         for key, df in self.statistics_dfs_dict.items():
             print(df)
