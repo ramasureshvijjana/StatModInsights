@@ -8,5 +8,6 @@ def stat_mod_insighter_start():
     print("Pipeline running succeeded.")
     pass
 
-stat_mod_insighter_start()
+if __name__ == "__main__":
+    stat_mod_insighter_start()
 # oops setup
