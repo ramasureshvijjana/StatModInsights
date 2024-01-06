@@ -1,8 +1,10 @@
 import requests
 import json
-
+import pandas as pd
 
 class Util:
+    def __init__(self):
+        pass
     def download_data_config(self, github_raw_url):
 
         # Specify the local path where you want to save the downloaded file
@@ -20,5 +22,6 @@ class Util:
 
         print(f"MeticulousStatsReporter  {data_json}")
         return data_json
-    def __init__(self):
-        pass
+    def load_input_data(self, data_file_path):
+        data = pd.read_csv(data_file_path)
+        return data
