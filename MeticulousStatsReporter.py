@@ -25,12 +25,14 @@ class  MeticulousStatsReporter:
                      The classified datatype columns are {self.datatype_classified_clms}""")
         
         # Creating statistics datafrmes to showcase stat reports.
+        self.statistics_dfs_dict = dict()
         self.create_statistics_dfs()
         # Updating datatype stats
         self.update_datatype_stats()
 
+        print(df for df in self.statistics_dfs_dict)
+
     def create_statistics_dfs(self):
-        self.statistics_dfs_dict = dict()
         for key, clm_list in self.datatype_classified_clms.items():
             if len(clm_list) > 0:
                 self.statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,columns=['Data_Types'])
@@ -39,10 +41,3 @@ class  MeticulousStatsReporter:
         for key in self.statistics_dfs_dict:
             clm_datatype_dict = self.data[self.datatype_classified_clms[key]].dtypes
             self.statistics_dfs_dict[key]['Data_Types'] = self.statistics_dfs_dict[key].index.map(clm_datatype_dict)
-            print(self.statistics_dfs_dict[key])
-            
-        # all_columns_dtypes = 
-        # for key in self.statistics_dfs_dict:
-        #     for clm in self.datatype_classified_clms[key]:
-        #         clm_datatype_dict = self.data.dtypes
-        # self.statistics_dfs_dict[key]['Data_Types'] = self.statistics_dfs_dict[key].index.map()
