@@ -32,4 +32,5 @@ class Util:
             numaric_columns = meticulous_stats_reporter_obj.data_json['numaric_columns']
         else:
             datatype_dict = dict(meticulous_stats_reporter_obj.data.dtypes)
-            print("Data type of all columns is {datatype_dict}")
+            #numaric_columns = 
+            print(f"Data type of all columns is {datatype_dict}")
