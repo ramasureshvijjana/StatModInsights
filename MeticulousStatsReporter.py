@@ -21,8 +21,20 @@ class  MeticulousStatsReporter:
         # Classifying the dataframe columns based on dtypes.
         self.datatype_classified_clms = dict()
         util_obj.classifying_numeric_and_obj_clms(self)
-        logging.info(f"The dataframe columns are classified successfully based on dtypes.\n\
-              The classified datatype columns are {self.datatype_classified_clms}")
+        logging.info(f"""The dataframe columns are classified successfully based on dtypes.
+                     The classified datatype columns are {self.datatype_classified_clms}""")
+        
+        # Creating statistics datafrmes to showcase stat reports.
+        self.create_statistics_dfs()
+
+
+    def create_statistics_dfs(self):
+        statistics_dfs_dict = dict()
+        for key, clm_list in self.datatype_classified_clms.items():
+            if len(clm_list) > 0:
+                statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,columns=['Data_Types'])
+                print(statistics_dfs_dict[key])
+
     
 
         
