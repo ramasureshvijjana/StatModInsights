@@ -1,13 +1,11 @@
 import os
 from MeticulousStatsReporter import MeticulousStatsReporter as msr
 
-def stat_mod_insighter_start():
+if __name__ == "__main__":
     print("Pipeline running started.")
     github_raw_url = os.getenv("feed_json")
     smi_obj = msr(github_raw_url)
     print("Pipeline running succeeded.")
     pass
 
-if __name__ == "__main__":
-    stat_mod_insighter_start()
 # oops setup
