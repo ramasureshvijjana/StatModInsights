@@ -52,7 +52,7 @@ class  MeticulousStatsReporter:
             mean_median_mode_values['median'] = {numaric_clm: self.data[numaric_clm].median() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
             #mean_median_mode_values['mode'] = {numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
             print({numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']})
-            print(self.data['year'].mode())
+            print(self.data['year'].mode().values())
             # print(f"clms_mean_values: {clms_mean_values}")
             for key, val in mean_median_mode_values.items():
                 #print(f"key: {key} and val: {val}")
