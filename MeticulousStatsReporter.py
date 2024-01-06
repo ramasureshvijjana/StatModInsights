@@ -29,8 +29,9 @@ class  MeticulousStatsReporter:
         self.create_statistics_dfs()
         # Updating datatype stats
         self.update_datatype_stats()
-
-        print(df for df in self.statistics_dfs_dict)
+        
+        for key, df in self.statistics_dfs_dict.items():
+            print(df)
 
     def create_statistics_dfs(self):
         for key, clm_list in self.datatype_classified_clms.items():
