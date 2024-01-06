@@ -38,7 +38,7 @@ class  MeticulousStatsReporter:
         for key, clm_list in self.datatype_classified_clms.items():
             if len(clm_list) > 0:
                 self.statistics_dfs_dict[key] = pd.DataFrame(index=clm_list ,
-                                                             columns=['Data_Types', 'mean', 'median', 'mode'])
+                                                             columns=['Data_Types', 'mean', 'median', 'mode', 'Null_Values_Count'])
 
     def update_datatype_stats(self):
         for key in self.statistics_dfs_dict:
@@ -50,11 +50,13 @@ class  MeticulousStatsReporter:
         if 'numeric_columns' in self.statistics_dfs_dict:
             mean_median_mode_values['mean'] = {numaric_clm: self.data[numaric_clm].mean() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
             mean_median_mode_values['median'] = {numaric_clm: self.data[numaric_clm].median() for numaric_clm in self.datatype_classified_clms['numeric_columns']}
-            print(self.data['year'].mode().iloc[0])
             mean_median_mode_values['mode'] = {numaric_clm: self.data[numaric_clm].mode().iloc[0] for numaric_clm in self.datatype_classified_clms['numeric_columns']}
-            #print({numaric_clm: self.data[numaric_clm].mode() for numaric_clm in self.datatype_classified_clms['numeric_columns']})
             
-            # print(f"clms_mean_values: {clms_mean_values}")
             for key, val in mean_median_mode_values.items():
-                #print(f"key: {key} and val: {val}")
                 self.statistics_dfs_dict['numeric_columns'][key] = self.statistics_dfs_dict['numeric_columns'].index.map(val)
+
+    def update_null_values_count(self):
+        # Updating null values count in stats df from all types of columns with for loop.
+        for key in self.statistics_dfs_dict:
+            null_values_count_dict = {numaric_clm: self.data[numaric_clm].isna().sum() for numaric_clm in self.datatype_classified_clms[key]}
+            self.statistics_dfs_dict[key]['Null_Values_Count'] = self.statistics_dfs_dict[key].index.map(null_values_count_dict)
