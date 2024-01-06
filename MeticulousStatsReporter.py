@@ -27,10 +27,11 @@ class  MeticulousStatsReporter:
         # Creating statistics datafrmes to showcase stat reports.
         self.statistics_dfs_dict = dict()
         self.create_statistics_dfs()
-        # Updating datatype stats
-        self.update_datatype_stats()
-        self.update_mean_median_mode()
+        self.update_datatype_stats() # Updating datatype stats
+        self.update_mean_median_mode() # Updating mean, median, mode values
+        self.update_null_values_count() # Updating null values
 
+        # Displaying final statistics dataframes.
         for key, df in self.statistics_dfs_dict.items():
             print(df)
 
