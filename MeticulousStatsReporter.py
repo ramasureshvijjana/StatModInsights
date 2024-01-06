@@ -54,4 +54,5 @@ class  MeticulousStatsReporter:
             
             # print(f"clms_mean_values: {clms_mean_values}")
             for key, val in mean_median_mode_values.items():
+                print(f"key: {key} and val: {val}")
                 self.statistics_dfs_dict['numeric_columns'][key] = self.statistics_dfs_dict['numeric_columns'].index.map(val)
