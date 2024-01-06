@@ -38,7 +38,7 @@ class Util:
                 msr_obj.datatype_classified_clms[key] = msr_obj.data_json[key]
             else:
                 msr_obj.datatype_classified_clms[key] = [col for col in datatype_unkown_columns if pd.api.types.is_numeric_dtype(msr_obj.data[col])]
-            datatype_unkown_columns -= msr_obj.datatype_classified_clms[key]
+            datatype_unkown_columns = [clm for clm in datatype_unkown_columns if clm not in msr_obj.datatype_classified_clms[key]]
             print(f"The Datatypes classified columns after filter the Numaric columns are {msr_obj.datatype_classified_clms}")
         
         msr_obj.datatype_classified_clms['datatype_unkown_columns'] = datatype_unkown_columns
