@@ -54,3 +54,5 @@ jobs:
     - name: Print Working Directory
       run: |
         pwd
+        cd /home/runner/work/StatModInsights/StatModInsights
+        ls
