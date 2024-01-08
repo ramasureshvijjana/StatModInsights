@@ -1,6 +1,7 @@
 import pandas as pd
 from util import Util
 from docx import Document
+import os
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -86,7 +87,10 @@ class  MeticulousStatsReporter:
             null_values_count_dict = {numaric_clm: self.data[numaric_clm].isna().sum() for numaric_clm in self.datatype_classified_clms[key]}
             self.statistics_dfs_dict[key]['Null_Values_Count'] = self.statistics_dfs_dict[key].index.map(null_values_count_dict)
 
-    def save_logs_to_doc(self, logs, doc_filename='https://raw.githubusercontent.com/ramasureshvijjana/StatModInsights_JSON/master/logs_document.docx'):
+    def save_logs_to_doc(self, logs, doc_filename='logs_document.docx'):
+        # Use the GitHub Actions workspace directory
+        workspace_dir = os.environ.get('GITHUB_WORKSPACE', '_')
+        doc_path = os.path.join(workspace_dir, doc_filename)
         document = Document()
 
         # Add a title to the document
@@ -97,5 +101,5 @@ class  MeticulousStatsReporter:
             document.add_paragraph(log)
 
         # Save the document
-        document.save(doc_filename)
-        print(f"Logs saved to {doc_filename}")
+        document.save(doc_path)
+        print(f"Logs saved to {doc_path}")
