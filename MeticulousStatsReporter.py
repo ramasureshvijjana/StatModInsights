@@ -1,5 +1,6 @@
 import pandas as pd
 from util import Util
+from docx import Document
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -50,6 +51,10 @@ class  MeticulousStatsReporter:
         self.update_mean_median_mode() # Updating mean, median, mode values
         self.update_null_values_count() # Updating null values
 
+        fname = github_raw_url.split('/')[-1]
+        self.logs = [f"File Name: {fname}                 Date:", "rama"]
+        self.save_logs_to_doc(self.logs)
+        
         # Displaying final statistics dataframes.
         for key, df in self.statistics_dfs_dict.items():
             print(df)
@@ -80,3 +85,17 @@ class  MeticulousStatsReporter:
         for key in self.statistics_dfs_dict:
             null_values_count_dict = {numaric_clm: self.data[numaric_clm].isna().sum() for numaric_clm in self.datatype_classified_clms[key]}
             self.statistics_dfs_dict[key]['Null_Values_Count'] = self.statistics_dfs_dict[key].index.map(null_values_count_dict)
+
+    def save_logs_to_doc(logs, doc_filename='logs_document.docx'):
+        document = Document()
+
+        # Add a title to the document
+        document.add_heading('Generated Logs', level=1)
+
+        # Add logs to the document
+        for log in logs:
+            document.add_paragraph(log)
+
+        # Save the document
+        document.save(doc_filename)
+        print(f"Logs saved to {doc_filename}")

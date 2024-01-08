@@ -41,6 +41,7 @@ jobs:
         pip install pandas
         pip install requests
         pip install logging
+        pip install python-docx
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: StatModInsights
