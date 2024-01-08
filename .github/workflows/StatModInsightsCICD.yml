@@ -42,7 +42,6 @@ jobs:
         pip install requests
         pip install logging
         pip install python-docx
-        pip install base64
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: StatModInsights
