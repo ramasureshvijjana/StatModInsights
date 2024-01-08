@@ -54,7 +54,7 @@ class  MeticulousStatsReporter:
         fname = github_raw_url.split('/')[-1]
         self.logs = [f"File Name: {fname}                 Date:", "rama"]
         self.save_logs_to_doc(self.logs)
-        
+
         # Displaying final statistics dataframes.
         for key, df in self.statistics_dfs_dict.items():
             print(df)
@@ -86,7 +86,7 @@ class  MeticulousStatsReporter:
             null_values_count_dict = {numaric_clm: self.data[numaric_clm].isna().sum() for numaric_clm in self.datatype_classified_clms[key]}
             self.statistics_dfs_dict[key]['Null_Values_Count'] = self.statistics_dfs_dict[key].index.map(null_values_count_dict)
 
-    def save_logs_to_doc(logs, doc_filename='logs_document.docx'):
+    def save_logs_to_doc(self, logs, doc_filename='logs_document.docx'):
         document = Document()
 
         # Add a title to the document
