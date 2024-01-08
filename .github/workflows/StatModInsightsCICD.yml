@@ -50,3 +50,11 @@ jobs:
         data_file_path: "https://raw.githubusercontent.com/ramasureshvijjana/StatModInsights_JSON/master/nyc_flights.csv"
       run: |
         python StatModInsighter.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git add logs.docx
+        git commit -m "Add CI/CD logs"
+        git push

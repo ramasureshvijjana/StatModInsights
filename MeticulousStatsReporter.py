@@ -91,8 +91,8 @@ class  MeticulousStatsReporter:
 
     def save_logs_to_doc(self, logs, doc_filename='logs_document.docx'):
         # Use the GitHub Actions workspace directory
-        workspace_dir = os.environ.get('GITHUB_WORKSPACE', '_')
-        doc_path = os.path.join(workspace_dir, doc_filename)
+        # workspace_dir = os.environ.get('GITHUB_WORKSPACE', '_')
+        # doc_path = os.path.join(workspace_dir, doc_filename)
         document = Document()
 
         # Add a title to the document
@@ -103,28 +103,28 @@ class  MeticulousStatsReporter:
             document.add_paragraph(log)
 
         # Save the document
-        document.save(doc_path)
-        print(f"Logs saved to {doc_path}")
+        document.save(doc_filename)
+        print(f"Logs saved to {doc_filename}")
 
-        repo_owner = 'ramasureshvijjana'
-        repo_name = 'StatModInsights_JSON'
-        github_token = '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'
-        repo_url = f'https://github.com/{repo_owner}/{repo_name}.git'
-        repo_path = '/path/in/repo/'
-        # Push the document to the target repository
-        commit_message = 'Add generated document'
-        headers = {
-            'Authorization': f'Bearer {github_token}',
-            'Content-Type': 'application/json',
-        }
-        data = {
-            'message': commit_message,
-            'content': base64.b64encode(open(doc_path, 'rb').read()).decode('utf-8'),
-        }
-        api_url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{repo_path}{doc_filename}'
-        response = requests.put(api_url, headers=headers, json=data)
+        # repo_owner = 'ramasureshvijjana'
+        # repo_name = 'StatModInsights_JSON'
+        # github_token = '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'
+        # repo_url = f'https://github.com/{repo_owner}/{repo_name}.git'
+        # repo_path = '/path/in/repo/'
+        # # Push the document to the target repository
+        # commit_message = 'Add generated document'
+        # headers = {
+        #     'Authorization': f'Bearer {github_token}',
+        #     'Content-Type': 'application/json',
+        # }
+        # data = {
+        #     'message': commit_message,
+        #     'content': base64.b64encode(open(doc_path, 'rb').read()).decode('utf-8'),
+        # }
+        # api_url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{repo_path}{doc_filename}'
+        # response = requests.put(api_url, headers=headers, json=data)
 
-        if response.status_code == 201:
-            print(f"Document pushed to {repo_url}")
-        else:
-            print(f"Failed to push document. Status code: {response.status_code}, Response: {response.text}")
+        # if response.status_code == 201:
+        #     print(f"Document pushed to {repo_url}")
+        # else:
+        #     print(f"Failed to push document. Status code: {response.status_code}, Response: {response.text}")
