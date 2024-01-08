@@ -1,6 +1,8 @@
 import pandas as pd
 from util import Util
 from docx import Document
+import base64
+import requests
 import os
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
@@ -103,3 +105,26 @@ class  MeticulousStatsReporter:
         # Save the document
         document.save(doc_path)
         print(f"Logs saved to {doc_path}")
+
+        repo_owner = 'ramasureshvijjana'
+        repo_name = 'StatModInsights_JSON'
+        github_token = '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'
+        repo_url = f'https://github.com/{repo_owner}/{repo_name}.git'
+        repo_path = '/path/in/repo/'
+        # Push the document to the target repository
+        commit_message = 'Add generated document'
+        headers = {
+            'Authorization': f'Bearer {github_token}',
+            'Content-Type': 'application/json',
+        }
+        data = {
+            'message': commit_message,
+            'content': base64.b64encode(open(doc_path, 'rb').read()).decode('utf-8'),
+        }
+        api_url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{repo_path}{doc_filename}'
+        response = requests.put(api_url, headers=headers, json=data)
+
+        if response.status_code == 201:
+            print(f"Document pushed to {repo_url}")
+        else:
+            print(f"Failed to push document. Status code: {response.status_code}, Response: {response.text}")

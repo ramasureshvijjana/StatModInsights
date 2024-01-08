@@ -1,6 +1,6 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
+# 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
 name: StatModInsighter
 
 on:
@@ -42,6 +42,7 @@ jobs:
         pip install requests
         pip install logging
         pip install python-docx
+        pip install base64
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: StatModInsights
