@@ -56,3 +56,14 @@ jobs:
         pwd
         cd /home/runner/work/StatModInsights/StatModInsights
         ls
+    - name: Upload Document as Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: logs_document
+        path: /home/runner/work/StatModInsights/StatModInsights/logs_document.docx
+
+    - name: Download Document Artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: logs_document
+        path: /path/on/local/machine
