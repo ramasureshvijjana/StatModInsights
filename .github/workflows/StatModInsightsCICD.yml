@@ -66,4 +66,4 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: logs_document
-        path: /path/on/local/machine
+        path: F:\Doc_Work
