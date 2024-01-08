@@ -60,4 +60,4 @@ jobs:
         git remote add origin_with_token "https://$PAT_TOKEN@github.com/ramasureshvijjana/StatModInsights.git"
         git push --set-upstream origin_with_token master
       env:
-    PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
