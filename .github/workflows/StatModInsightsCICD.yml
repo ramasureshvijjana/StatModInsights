@@ -51,12 +51,6 @@ jobs:
       run: |
         python StatModInsighter.py
 
-    - name: Commit and push changes
+    - name: Print Working Directory
       run: |
-        git config --global user.email "ramasureshvijjana@gmail.com"
-        git config --global user.name "ramasureshvijjana"
-        git add logs_document.docx
-        git commit -m "Add CI/CD logs"
-        git push "https://$PAT_TOKEN@github.com/ramasureshvijjana/StatModInsights_JSON.git" master
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        pwd
