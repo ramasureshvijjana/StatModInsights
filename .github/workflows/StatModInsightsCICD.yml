@@ -43,6 +43,7 @@ jobs:
         pip install logging
         pip install python-docx
         pip install tabulate
+        pip install missingno
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: StatModInsights
