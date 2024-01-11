@@ -111,9 +111,9 @@ class  MeticulousStatsReporter:
     def stats_report(self, fname):
         stats_report_str = f"""
                           STATISTICAL REPORT
-Report ID: 12345                                       Date: {datetime.now()}
+Report ID: 12345                        Date: {datetime.now()}
 File Name: {fname}
-==============================================================================
 
-        """
+=============================================================================="""
         print(stats_report_str)
+        print(f"The {key} reports : \n {df}" for key, df in self.statistics_dfs_dict.items())
