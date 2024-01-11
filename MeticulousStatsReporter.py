@@ -124,6 +124,6 @@ File Name: {fname}
             print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
             print("\nThe null values graphs: \n")
             msn.matrix(self.data)
-            msn.bar(self.data)
-            msn.heatmap(self.data)
+            plt.savefig('matrix_plot.png')  # Save the matrix plot as an image file
+            plt.clf()  # Clear the figure for the next plot
             plt.show()
