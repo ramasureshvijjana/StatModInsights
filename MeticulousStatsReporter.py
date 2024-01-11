@@ -5,6 +5,7 @@ import base64
 import requests
 import os
 from datetime import datetime
+from tabulate import tabulate
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -118,4 +119,4 @@ File Name: {fname}
         print(stats_report_str)
         for key, df in self.statistics_dfs_dict.items():
             print(f"\nThe {key} reports :\n")
-            df.style
+            print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
