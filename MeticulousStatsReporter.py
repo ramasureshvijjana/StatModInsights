@@ -4,6 +4,7 @@ from docx import Document
 import base64
 import requests
 import os
+from datetime import datetime
 import logging
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -53,9 +54,9 @@ class  MeticulousStatsReporter:
         self.update_datatype_stats() # Updating datatype stats
         self.update_mean_median_mode() # Updating mean, median, mode values
         self.update_null_values_count() # Updating null values
-        self.stats_report()
+        fname = github_raw_url.split('/')[-1]
+        self.stats_report(fname)
 
-        # fname = github_raw_url.split('/')[-1]
         # self.logs = [f"File Name: {fname}                 Date:", "rama"]
         # self.save_logs_to_doc(self.logs)
 
@@ -107,10 +108,10 @@ class  MeticulousStatsReporter:
         document.save(doc_filename)
         print(f"Logs saved to {doc_filename}")
 
-    def stats_report(self):
+    def stats_report(self, fname):
         stats_report_str = """
-STATISTICAL REPORT
-File Name: {}                                               Date: {}
+                          STATISTICAL REPORT
+File Name: {fname}                                               Date: {datetime.now()}
 
 ==============================================================================
 
