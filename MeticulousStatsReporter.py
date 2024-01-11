@@ -111,8 +111,8 @@ class  MeticulousStatsReporter:
     def stats_report(self, fname):
         stats_report_str = f"""
                           STATISTICAL REPORT
-File Name: {fname}                                               Date: {datetime.now()}
-
+Report ID: 12345                                       Date: {datetime.now()}
+File Name: {fname}
 ==============================================================================
 
         """
