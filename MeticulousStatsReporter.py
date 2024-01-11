@@ -6,6 +6,7 @@ import requests
 import os
 from datetime import datetime
 from tabulate import tabulate
+import missingno as msn
 import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
@@ -120,3 +121,7 @@ File Name: {fname}
         for key, df in self.statistics_dfs_dict.items():
             print(f"\nThe {key} reports :\n")
             print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
+            print("\nThe null values graphs: \n")
+            msn.matrix(self.data)
+            msn.bar(self.data)
+            msn.heatmap(self.data)
