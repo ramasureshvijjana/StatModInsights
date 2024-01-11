@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 from tabulate import tabulate
 import missingno as msn
+import matplotlib.pyplot as plt
 import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
