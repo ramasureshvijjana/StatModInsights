@@ -117,5 +117,5 @@ File Name: {fname}
 =============================================================================="""
         print(stats_report_str)
         for key, df in self.statistics_dfs_dict.items():
-            print(f"The {key} reports :")
-            print(df)
+            print(f"\nThe {key} reports :\n")
+            display(df)
