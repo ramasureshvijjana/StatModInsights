@@ -109,7 +109,7 @@ class  MeticulousStatsReporter:
         print(f"Logs saved to {doc_filename}")
 
     def stats_report(self, fname):
-        stats_report_str = """
+        stats_report_str = f"""
                           STATISTICAL REPORT
 File Name: {fname}                                               Date: {datetime.now()}
 
