@@ -109,6 +109,10 @@ class  MeticulousStatsReporter:
 
     def stats_report(self):
         stats_report_str = """
-==================================================================================
+STATISTICAL REPORT
+File Name: {}                                               Date: {}
+
+==============================================================================
+
         """
         print(stats_report_str)
