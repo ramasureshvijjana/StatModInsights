@@ -126,3 +126,4 @@ File Name: {fname}
             msn.matrix(self.data)
             msn.bar(self.data)
             msn.heatmap(self.data)
+            plt.show()
