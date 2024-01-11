@@ -7,7 +7,7 @@ import os
 from datetime import datetime
 from tabulate import tabulate
 import logging
-logging.basicConfig(level=logging.DEBUG, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s : %(asctime)s : %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 class  MeticulousStatsReporter:
     def __init__(self, github_raw_url, data_file_path):
@@ -31,19 +31,19 @@ class  MeticulousStatsReporter:
         # Step-1:
         ## Downloading data configuration json from remote GitHub repository.
         self.data_json = util_obj.download_data_config(github_raw_url)
-        logging.info(f"The data configuration json has been downloaded successfully.")
+        logging.debug(f"The data configuration json has been downloaded successfully.")
 
         ## Loading input data file as pandas df from remote GitHub repository.
         required_columns = self.data_json['required_columns'] if 'required_columns' in self.data_json else None
         self.data = util_obj.load_input_data(data_file_path, required_columns)
         self.data.head()
-        logging.info(f"The input data loaded successfully.")
+        logging.debug(f"The input data loaded successfully.")
 
         # Step-2:
         ## Classifying the dataframe columns based on its dtypes.
         self.datatype_classified_clms = dict()
         util_obj.classifying_numeric_and_obj_clms(self)
-        logging.info(f"""The dataframe columns are classified successfully based on dtypes.
+        logging.debug(f"""The dataframe columns are classified successfully based on dtypes.
                      The classified datatype columns are {self.datatype_classified_clms}""")
         
         # Step-3:

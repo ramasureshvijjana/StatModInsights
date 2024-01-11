@@ -17,7 +17,7 @@ if __name__ == "__main__":
         No return values
     """
 
-    logging.info("Pipeline running started.")
+    logging.debug("Pipeline running started.")
     
     # Collecting the environment variables from CICD yml.
     github_raw_url = os.getenv("feed_json")
@@ -26,4 +26,4 @@ if __name__ == "__main__":
     # Creating object of 'MeticulousStatsReporter' class, this is the starting point of pipeline process.
     # Means pipeline running starts by creating the obj to 'MeticulousStatsReporter' class
     smi_obj = msr(github_raw_url, data_file_path)
-    logging.info("Pipeline running succeeded.")
+    logging.debug("Pipeline running succeeded.")
