@@ -22,7 +22,7 @@ class  MeticulousStatsReporter:
             Step-4: It will update the datatype, mean, median, mode, null, etc... values stats.
         Parameters:
             github_raw_url : Data configaration json file url from remote GitHub repository.
-            data_file_path : Input data file url from remote GitHub repository.
+            data_file_path : Input data file url from remote GitHub repository  .
         Return Values:
             No return values
         """
